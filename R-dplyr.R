@@ -43,8 +43,10 @@ View(DF_capped)
 install.packages("R.utils")
 library(R.utils)
 DF_capped <- DF_replaced %>% mutate(City = capitalize(City))
+
 View(DF_capped)
 
+str(DF_capped)
 is.numeric(DF_capped$Temperature.F.)
 
 # Cleaning up Date
@@ -116,7 +118,7 @@ str(DF6)
 # ...so that we can add an actual "Date" variable
 DF7 = DF6 %>% mutate(Date=ISOdate(Year,Month,Day))
 View(DF7)
-
+str(DF7)
 # Using pipes to do most of the last bit at once...
 DF_cleaned <- DF2 %>% separate(col=Date,into=c("Month", "Day")," ",extra="merge") %>% 
               mutate(Month=replace(Month,Month=="Jan",1),
